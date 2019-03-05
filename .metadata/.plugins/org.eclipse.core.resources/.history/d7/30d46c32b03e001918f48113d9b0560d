@@ -1,0 +1,9 @@
+package com.braidenmiller.notesapp.entities;
+
+import javax.persistence.Entity;
+
+@Entity
+public class Note {
+	
+	
+}

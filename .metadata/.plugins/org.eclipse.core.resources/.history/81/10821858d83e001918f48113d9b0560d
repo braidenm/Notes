@@ -1,0 +1,13 @@
+package com.braidenmiller.notesapp.services;
+
+import com.braidenmiller.notesapp.entities.User;
+
+public class AuthServiceImpl implements AuthService {
+
+	@Override
+	public User register(User user) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+}

@@ -1,0 +1,5 @@
+package com.braidenmiller.notesapp.security;
+
+public class SecurityConfig {
+
+}

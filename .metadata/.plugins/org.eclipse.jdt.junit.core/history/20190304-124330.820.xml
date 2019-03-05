@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?><testrun name="NoteTest" project="NotesJPA" tests="1" started="1" failures="0" errors="0" ignored="0">
+  <testsuite name="com.braidenmiller.notesapp.entities.NoteTest" time="0.107" displayname="NoteTest" uniqueid="[engine:junit-jupiter]/[class:com.braidenmiller.notesapp.entities.NoteTest]">
+    <testcase name="test" classname="com.braidenmiller.notesapp.entities.NoteTest" time="0.107" displayname="testing the database connection for GET" uniqueid="[engine:junit-jupiter]/[class:com.braidenmiller.notesapp.entities.NoteTest]/[method:test()]"/>
+  </testsuite>
+</testrun>

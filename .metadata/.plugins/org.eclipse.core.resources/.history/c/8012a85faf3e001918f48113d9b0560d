@@ -1,0 +1,5 @@
+package com.braidenmiller.notesapp.entities;
+
+public class Note {
+
+}

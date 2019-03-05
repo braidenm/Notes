@@ -1,0 +1,5 @@
+package com.braidenmiller.notesapp.services;
+
+public interface UserService {
+
+}
