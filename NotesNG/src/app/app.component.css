@@ -1,0 +1,10 @@
+.app {
+  height: 1000px;
+  width: 100%;
+  margin-top: 0%;
+  background-image: url("src/app/photos/background-wood.jpg");
+}
+
+button {
+  margin: 5%;
+}

@@ -1,3 +1,56 @@
-<p>
-  register works!
-</p>
+<br>
+<br>
+<br>
+<br>
+<div class="row ">
+
+  <div class="col-sm-4"></div>
+  <div class="col-sm-5 registerContent">
+    <h3>Register</h3>
+    <form>
+      <table class="table table-striped">
+        <tbody>
+          <tr>
+            <td>
+              First Name:
+              <input class="right" type="text" placeholder="First Name" name="firstName" required [(ngModel)]="user.firstName">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+                Last Name:
+                <input class="right" type="text" placeholder="Last Name" name="lastName" required [(ngModel)]="user.lastName">
+            </td>
+          </tr>
+
+          <tr>
+            <td>
+                Email:
+                <input class="right" type="text" placeholder="Email" name="email" required [(ngModel)]="user.email">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                Username:
+                <input class="right" type="text" placeholder="Username" name="username" required [(ngModel)]="user.username">
+            </td>
+          </tr>
+          <tr>
+            <td>
+                Password:
+              <input class="right" type="text" placeholder="Password" name="password" required [(ngModel)]="user.password">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <input type="submit" value="Register" class="btn btn-outline-primary" (click)="register()">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+  </div>
+
+</div>

@@ -72,7 +72,7 @@ export class AuthService {
 
   // P R I V A T E  M E T H O D S
 
-  generateBasicAuthCredentials(username, password) {
+  private generateBasicAuthCredentials(username, password) {
     return btoa(`${username}:${password}`);
   }
 }

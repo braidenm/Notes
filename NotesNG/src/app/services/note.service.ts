@@ -83,7 +83,7 @@ export class NoteService {
   private handleError(error: any) {
     console.error('Something Broke');
     console.log(error);
-    return throwError(error.json().error || 'Server Error');
+    return throwError('Server Error');
   }
 
   private getHttp() {

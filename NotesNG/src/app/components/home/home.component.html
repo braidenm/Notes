@@ -1,3 +1,21 @@
-<p>
-  home works!
-</p>
+<div class="row">
+  <div class="col-sm-3"></div>
+  <div class="col-sm-6 welcome">
+    <div *ngIf="!isLoggedIn()">
+      <h1>Welcome to The Note App</h1>
+      <h3>Remember things by writing them down</h3>
+      <h2>Sign up Today!</h2>
+      <hr>
+      <a [routerLink]="['/register']"><button class="btn btn-outline-primary">Register</button></a>
+    </div>
+    <br>
+    <div *ngIf="isLoggedIn()">
+      <h1>Welcome to The Note App</h1>
+      <h3>Remember things by writing them down</h3>
+      <hr>
+      <a [routerLink]="['/notes']"><button class="btn btn-outline-primary">See Your Notes</button></a>
+      <br>
+      <br>
+    </div>
+    </div>
+</div>

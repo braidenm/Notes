@@ -4,8 +4,10 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
+import { IncompletePipe } from './pipes/incomplete.pipe';
 import { LoginComponent } from './components/login/login.component';
 import { LogoutComponent } from './components/logout/logout.component';
 import { NgModule } from '@angular/core';
@@ -15,7 +17,7 @@ import { NotesComponent } from './components/notes/notes.component';
 import { NoteService } from './services/note.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { RegisterComponent } from './components/register/register.component';
-import { FormsModule } from '@angular/forms';
+import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -29,6 +31,7 @@ import { FormsModule } from '@angular/forms';
     NotesComponent,
     NotFoundComponent,
     RegisterComponent,
+    IncompletePipe,
   ],
   imports: [
     BrowserModule,
@@ -39,6 +42,8 @@ import { FormsModule } from '@angular/forms';
   ],
   providers: [
     AuthService,
+    DatePipe,
+    IncompletePipe,
     NoteService,
   ],
   bootstrap: [AppComponent]

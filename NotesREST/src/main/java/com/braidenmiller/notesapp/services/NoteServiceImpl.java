@@ -127,7 +127,12 @@ public class NoteServiceImpl implements NoteService {
 					result.add(note);
 				}
 			}
+			if(search.equals("") || search == null) {
+				result.addAll(notesRepo.findAll());
+			}
 		}
+		
+		
 		
 		return result;
 	}

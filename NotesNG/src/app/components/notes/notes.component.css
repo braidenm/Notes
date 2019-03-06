@@ -1,0 +1,59 @@
+.count {
+  padding-left: 10px;
+  padding-right: 10px;
+  border-radius: 10px;
+  background-color: rgb(0, 115, 255);
+  margin-top: 10px;
+  width: 20px;
+  height: 10px;
+  color: white;
+}
+
+.danger {
+  background-color: red;
+}
+.warning {
+  background-color: yellow;
+}
+.safe {
+  background-color: green;
+}
+
+.strikeout {
+  text-decoration: line-through;
+}
+
+.notes {
+  background-color: white;
+  /* margin-top: 5%; */
+  border: thin;
+  border-radius: 10px;
+}
+
+.right {
+  text-align: right;
+}
+
+.notesBody {
+  max-height: 250px;
+  width: 100%;
+  overflow: hidden;
+  overflow-y: scroll;
+
+}
+
+.header {
+  display: inline-block;
+  margin-bottom: 5%;
+}
+.search {
+  margin-top: 2%;
+}
+
+.btn{
+  margin-top: 2%;
+}
+
+#addTitle {
+  margin-top: 2%;
+}
