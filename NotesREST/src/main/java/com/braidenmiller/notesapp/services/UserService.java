@@ -11,4 +11,5 @@ public interface UserService {
 	public User create(User user);
 	public User update(int id, User user);
 	public boolean destroy(int id);
+	public User getLoggedIn(String username);
 }

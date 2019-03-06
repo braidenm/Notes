@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap, catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
+import { User } from '../models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -30,11 +31,11 @@ export class AuthService {
         })
       };
      // create request to authenticate credentials
-      return this.http
-     .get(this.baseUrl + 'authenticate', httpOptions)
-     .pipe(
-       tap((res) => {
+      return this.http.get<User>(this.baseUrl + 'authenticate', httpOptions)
+     .pipe( tap((res) => {
          localStorage.setItem('credentials', credentials);
+         console.log(res);
+
          return res;
        }),
        catchError((err: any) => {
@@ -46,7 +47,7 @@ export class AuthService {
 
   register(user) {
     // create request to register a new account
-    return this.http.post(this.baseUrl + 'register', user)
+    return this.http.post<User>(this.baseUrl + 'register', user)
     .pipe(
         catchError((err: any) => {
           console.log(err);

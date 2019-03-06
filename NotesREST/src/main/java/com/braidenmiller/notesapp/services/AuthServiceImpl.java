@@ -20,8 +20,22 @@ public class AuthServiceImpl implements AuthService {
 		user.setPassword(encode.encode(user.getPassword()));
 		user.setEnabled(true);
 		user.setRole("standard");
+		if(!uniqueUsername(user)) {
+			user = new User();
+			user.setUsername("notUnique");
+			return user;
+		}
 		repo.saveAndFlush(user);
 		return user;
+	}
+	
+	private boolean uniqueUsername(User user) {
+		for (User u : repo.findAll()) {
+			if(user.getUsername().equals(u.getUsername())) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 }

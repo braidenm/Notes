@@ -1,0 +1,77 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 profile" *ngIf="!edit">
+      <h1>Profile</h1>
+      <table class="table table-striped">
+        <tr>
+          <td>
+            Name: {{user.firstName}} {{user.lastName}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            User Name: {{user.username}}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            Email: {{user.email}}
+          </td>
+        </tr>
+      </table>
+      <button type="button" class="btn btn-outline-primary" (click)="setEdit()">Edit</button>
+      <button type="button" class="btn btn-outline-danger" (click)="deactivate()">de-activate</button>
+    </div>
+    <div class="col-sm-8 profile" *ngIf="edit">
+      <h1>Profile</h1>
+      <form>
+      <table class="table table-striped">
+
+          <tr>
+            <td>
+              First Name:
+            </td>
+            <td>
+              <input type="text" required name="firstName" [(ngModel)]="edit.firstName">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              last Name:
+            </td>
+            <td>
+              <input type="text" required name="lastName" [(ngModel)]="edit.lastName">
+            </td>
+          </tr>
+          <tr>
+              <td>
+                Email:
+              </td>
+              <td>
+                  <input type="text" required name="email" [(ngModel)]="edit.email">
+              </td>
+            </tr>
+          <tr>
+            <td>
+              User Name:
+            </td>
+            <td>
+              <input type="text" required name="username" [(ngModel)]="edit.username">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              Password:
+            </td>
+            <td>
+                <input type="password" required name="password" [(ngModel)]="edit.password">
+            </td>
+          </tr>
+          <button type="button" class="btn btn-outline-secondary" (click)="cancelEdit()">Cancel</button>
+          <button type="button" class="btn btn-outline-success" (click)="saveEdit()">Save</button>
+        </table>
+      </form>
+    </div>
+  </div>
+</div>

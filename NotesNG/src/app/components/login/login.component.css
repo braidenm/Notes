@@ -2,3 +2,6 @@ input {
   margin: 1%;
   display: inline;
 }
+.invalid {
+  color: red;
+}

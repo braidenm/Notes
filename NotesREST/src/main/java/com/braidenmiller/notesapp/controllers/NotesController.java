@@ -48,11 +48,11 @@ public class NotesController {
 	public Note show(Principal principal, HttpServletResponse res, @PathVariable Integer id) {
 		try {
 			res.setStatus(200);
-			Note todo = noteService.show(principal.getName(), id);
-			if(todo == null) {
+			Note note = noteService.show(principal.getName(), id);
+			if(note == null) {
 				return null;
 			}
-			return todo;
+			return note;
 		} catch (Exception e) {
 			e.printStackTrace();
 			return null;

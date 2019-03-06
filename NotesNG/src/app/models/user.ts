@@ -1,3 +1,4 @@
+import { Note } from './note';
 
 export class User {
 
@@ -11,6 +12,7 @@ export class User {
   email: string;
   enabled: boolean;
   role: string;
+  notes: Note[];
 
   // C O N S T R U C T O R S
 

@@ -4,6 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { AuthService } from './services/auth.service';
 import { BrowserModule } from '@angular/platform-browser';
+import { DatePipe } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HomeComponent } from './components/home/home.component';
 import { HttpClientModule } from '@angular/common/http';
@@ -16,8 +17,8 @@ import { NavigationComponent } from './components/navigation/navigation.componen
 import { NotesComponent } from './components/notes/notes.component';
 import { NoteService } from './services/note.service';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
-import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,13 +26,14 @@ import { DatePipe } from '@angular/common';
     AppComponent,
     AdminComponent,
     HomeComponent,
+    IncompletePipe,
     LoginComponent,
     LogoutComponent,
     NavigationComponent,
     NotesComponent,
     NotFoundComponent,
+    ProfileComponent,
     RegisterComponent,
-    IncompletePipe,
   ],
   imports: [
     BrowserModule,

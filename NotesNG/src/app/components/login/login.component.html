@@ -1,8 +1,8 @@
 <form >
     <input type="text" placeholder="Username" name="username" [(ngModel)]="user.username">
-    <input type="text" placeholder="Password" name="password" [(ngModel)]="user.password">
+    <input type="password" placeholder="Password" name="password" [(ngModel)]="user.password">
     <input type="submit" value="Login" class="btn btn-outline-primary" (click)="login()">
   </form>
-  <div *ngIf="invalid">
-    <p>{{invalid}}</p>
+  <div class="invalid" *ngIf="invalid">
+    <h4>{{invalid}}</h4>
   </div>

@@ -13,6 +13,7 @@ export class RegisterComponent implements OnInit {
   // F I E L D S
 
   user: User = new User();
+  incomplete =  null;
 
   // C O N S T R U C T O R
 
@@ -21,21 +22,33 @@ export class RegisterComponent implements OnInit {
   // O N  I N I T
 
   ngOnInit() {
+    this.incomplete = null;
   }
 
   // M E T H O D S
 
   register() {
-   console.log(this.user);
+   if (!this.user.username || !this.user.password || !this.user.email) {
+       this.incomplete = 'Must Enter All Fields';
+       return;
+   }
    this.auth.register(this.user).subscribe(
     data => {
+      if (data.username === 'notUnique') {
+        this.incomplete = 'Username Already In Use';
+        return;
+      }
+      this.incomplete = null;
       this.auth.login(this.user.username, this.user.password).subscribe(
         success => {
           this.router.navigateByUrl('/notes');
         },
       );
     },
-    err => console.log('error in reggistering')
+    err => {
+      this.incomplete = 'User has been deactivated';
+      console.log('error in reggistering');
+    }
 
   );
 

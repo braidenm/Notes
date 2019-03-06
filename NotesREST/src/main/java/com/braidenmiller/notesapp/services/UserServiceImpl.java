@@ -30,6 +30,14 @@ public class UserServiceImpl implements UserService {
 		}
 		return null;
 	}
+	@Override
+	public User getLoggedIn(String username) {
+		User user = uRepo.findByUsername(username);
+		if(user != null) {
+			return user;
+		}
+		return null;
+	}
 
 	@Override
 	public User create(User user) {
@@ -55,7 +63,7 @@ public class UserServiceImpl implements UserService {
 			managed.setFirstName(user.getFirstName());
 			managed.setLastName(user.getLastName());
 			
-			if(!uniqueUsername(user)) {
+			if(!managed.getUsername().equals(user.getUsername()) && !uniqueUsername(user)) {
 				try {
 					throw new Exception("Invalid Username");
 				} catch (Exception e) {

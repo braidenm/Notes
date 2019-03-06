@@ -6,6 +6,9 @@
 
   <div class="col-sm-4"></div>
   <div class="col-sm-5 registerContent">
+    <div *ngIf="incomplete">
+      <h4 class="errorMess">{{incomplete}}</h4>
+    </div>
     <h3>Register</h3>
     <form>
       <table class="table table-striped">
