@@ -1,3 +1,88 @@
-<p>
-  admin works!
-</p>
+<div class="container">
+    <div class="row">
+      <div class="col-sm-2"></div>
+      <div class="col-sm-8 profile" *ngIf="!selectedUser">
+        <table class="table table-striped" >
+          <thead class="table-dark">
+            <tr>
+              <td>User Name</td>
+              <td>Enabled</td>
+            </tr>
+          </thead>
+          <tbody>
+
+            <tr *ngFor="let user of users">
+              <td (click)="selectUser(user)">{{user.username}}</td>
+              <td>{{user.enabled}}</td>
+            </tr>
+
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <div class="row" *ngIf="selectedUser">
+
+      <div class="col-sm-4 profile" *ngIf="selectedUser">
+        <h1>UserName: {{selectedUser.username}}</h1>
+        <form>
+          <table class="table table-striped">
+
+            <tr>
+              <td>
+                ID: {{selectedUser.id}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                First Name: {{selectedUser.firstName}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                last Name: {{selectedUser.lastName}}
+              </td>
+            </tr>
+            <tr>
+              <td>
+                Email: {{selectedUser.email}}
+              </td>
+            </tr>
+            <tr>
+              <td (click)="changeActivated()">
+                Enabled: {{selectedUser.enabled}}
+                (click to change)
+              </td>
+            </tr>
+            <tr>
+              <td (click)="changeRole()">
+                role: {{selectedUser.role}}
+                (click to change)
+              </td>
+            </tr>
+
+            <button type="button" class="btn btn-outline-secondary" (click)="cancelSelected()">Back</button>
+          </table>
+        </form>
+      </div>
+
+      <div class="col-sm-1 " *ngIf="selectedUser"></div>
+      <div class="col-sm-7 profile notes" *ngIf="selectedUser">
+        <h1>{{selectedUser.username}}'s notes</h1>
+        <table class="table table-striped">
+          <thead class="table-dark">
+            <tr >
+              <td>Note Title</td>
+              <td>Updated</td>
+              <td>Note Content</td>
+            </tr>
+          </thead>
+          <tr *ngFor="let note of selectedUser.notes">
+            <td>{{note.title}}</td>
+            <td>{{ note.updated | date}}</td>
+            <td>{{note.details}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
+

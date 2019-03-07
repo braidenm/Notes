@@ -7,10 +7,12 @@ import { NotFoundComponent } from './components/not-found/not-found.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { Routes, RouterModule } from '@angular/router';
+import { AdminComponent } from './components/admin/admin.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home' },
   { path: 'home', component: HomeComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'about', component: AboutComponent },
   { path: 'notes', component: NotesComponent },
   { path: 'notes/:id', component: NotesComponent },

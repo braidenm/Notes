@@ -28,14 +28,14 @@
               <thead class="thead-dark">
                 <th>Title</th>
                 <th>Mark</th>
-                <!-- <th>Completed</th> -->
+                <th>Last Updated</th>
                 <th class="right">Delete</th>
               </thead>
                 <tbody>
                   <tr *ngFor='let note of notes | incomplete: showComplete'>
                     <td class="title" [ngClass]="strikeout(note)" (click)="displayNote(note)" >{{note.title}}</td>
                     <td><input type="checkbox" [(ngModel)]="note.completed" (click)='updateBoxNote(note)'></td>
-                    <!-- <td [ngClass]="strikeout(note)">{{note.completed}}</td> -->
+                    <td [ngClass]="strikeout(note)">{{note.updated | date}}</td>
                     <td class="right"> <button class="btn btn-danger" (click)='deleteNote(note.id)'>X</button></td>
                   </tr>
 

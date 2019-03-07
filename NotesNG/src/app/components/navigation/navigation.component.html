@@ -18,6 +18,10 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/about']">About</a>
         </li>
+        <li class="nav-item" *ngIf="isAdmin">
+          <a class="nav-link" [routerLink]="['/admin']">Admin</a>
+        </li>
+
       </ul>
       <ul class="nav navbar-nav right"  >
         <li class="nav-item " *ngIf="isLoggedIn()">

@@ -1,9 +1,9 @@
+import { User } from 'src/app/models/user';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { AuthService } from './auth.service';
 import { Router } from '@angular/router';
-import { User } from '../models/note';
 import { catchError } from 'rxjs/operators';
 import { throwError } from 'rxjs';
 
@@ -14,6 +14,7 @@ export class UserService {
 
 
   // F I E L D S
+
   private user: User = null;
   private baseUrl = environment.baseUrl;
   private url = this.baseUrl + 'api/users';

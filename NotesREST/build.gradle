@@ -20,6 +20,11 @@ war {
   destinationDir = file("./")      // WAR folder under project root directory
 }
 
+bootJar {
+  destinationDir = file("./")      // WAR folder under project root directory
+  archiveName = "${baseName}.jar"     // Our app name, as defined in settings.gradle
+}
+
 group = 'com.braidenmiller'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '1.8'

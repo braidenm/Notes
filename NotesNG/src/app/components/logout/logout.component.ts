@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
+import { NavigationComponent } from '../navigation/navigation.component';
 
 @Component({
   selector: 'app-logout',
@@ -11,7 +12,7 @@ export class LogoutComponent implements OnInit {
 
   // C O N S T R U C T O R
 
-  constructor(private auth: AuthService, private router: Router) { }
+  constructor(private auth: AuthService, private router: Router, private navBar: NavigationComponent) { }
 
   // O N  I N I T
   ngOnInit() {
@@ -21,6 +22,7 @@ export class LogoutComponent implements OnInit {
 
   logout() {
     this.auth.logout();
+    this.navBar.setIsAdmin();
     this.router.navigateByUrl('home');
   }
 }
