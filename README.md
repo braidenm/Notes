@@ -15,7 +15,7 @@ Link to project on AWS: http://54.219.123.219:8080/NotesREST/#/home
 Username: user Password: password
 Username: admin Password: password
 
-* SimpleNotesREST: download the SimpleNotesREST.JAR file and run `java -jar SimpleNotesREST.jar &` on the terminal to use the curl commands for api calls
+* SimpleNotesREST: download the SimpleNotesREST.JAR file (SimpleNotesREST > SimpleNotesREST.JAR) and run `java -jar SimpleNotesREST.jar &` on the terminal to use the curl commands for api calls or test using PostMan
 
 * ngGitHubAPI: this is the angular frontend for the angular/issues api from github. download the file navigate to it and run `ng - serve -o &`
 
@@ -33,6 +33,8 @@ Spring security is used to hash the password and is using basic auth to protect 
 
 * ngGitHubAPI: This connects the GitHub angular issues api and filters them by the last 7 days in order from most recent. clicking on an item will open more details. 
 
+## Structure
+On the NotesREST app I used to "Projects" a JPA and a REST to manage the data. In the JPA i have the enitities mapped and tested using J-Unit to ensure they are talking with the database properly. Then I connect it to the rest app and configure the depenencies for jpa, rest, security, etc. Then the repositories are built extending 'jparepositories' to talk with the database using the existing libraries. The service objects apply logic from the controller api calls to the repositories. The controller is a REST controller using the given API structure (api/notes). Then the angular side impliments the api data and transforms it into a great looking front end. The SQL database uses 2 tables a user table and a note table with a one to many foriegn key to user. 
 
 ## Technology used
 
