@@ -1,11 +1,11 @@
-### Notes App
+# Notes App
 
 Created by:
 Braiden Miller
 
 ## How To Access:
 
-# There are several projects in here:
+### There are several projects in here:
 
 ALL Java programs are run on server 8085;
 angular is run on 4200
