@@ -24,7 +24,7 @@ export class GitComponent implements OnInit {
         this.issues = data;
         this.issues.sort((a, b) => {
 
-          if (a.updated_at < b.updated_at) {
+          if (a.created_at < b.created_at) {
             return 1;
           }
           return -1;

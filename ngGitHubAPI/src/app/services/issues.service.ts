@@ -22,6 +22,10 @@ constructor(private http: HttpClient) { }
 getAll() {
   const since = new Date(Date.now());
   since.setDate(since.getDate() - 7);
+  console.log(since.toISOString());
+  console.log(this.url + '?since=' + since.toISOString());
+
+
   return this.http.get<Issue[]>(this.url + '?since=' + since.toISOString());
 
 }

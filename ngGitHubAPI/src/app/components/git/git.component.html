@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class=" data" *ngIf="!selected">
+    <div class="col-sm-2"></div>
+    <div class="col-sm-8 data" *ngIf="!selected">
       <table class="table table-striped table-hover">
         <thead class="table-dark">
           <tr>
@@ -11,7 +12,7 @@
         <tbody>
           <tr *ngFor="let issue of issues">
             <td (click)="setSelected(issue)">{{issue.title}}</td>
-            <td>{{issue.updated_at | date}}</td>
+            <td>{{issue.created_at | date}}</td>
           </tr>
         </tbody>
       </table>
@@ -29,7 +30,7 @@
         <tbody>
           <tr>
             <td>{{selected.title}}</td>
-            <td>{{selected.updated_at | date}}</td>
+            <td>{{selected.created_at | date}}</td>
             <td>{{selected.user.login}}</td>
             <td *ngIf="selected.assignee">{{selected.assignee.login}}</td>
             <td *ngIf="!selected.assignee">No Assignee</td>

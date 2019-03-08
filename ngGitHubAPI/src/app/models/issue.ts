@@ -6,5 +6,5 @@ export class Issue {
   user: User;
   assignee: User;
   // tslint:disable-next-line:variable-name
-  updated_at: Date;
+  created_at: Date;
 }
