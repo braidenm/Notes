@@ -72,6 +72,14 @@ export class UserService {
       .pipe(catchError(this.handleError)
        );
   }
+  updateUserPassword(password: string, id: number) {
+    if (!this.auth.checkLogin) {
+      this.router.navigateByUrl('login');
+    }
+    return this.http.put<User>(this.url + '/' + 'password/' + id, password, this.getHttp())
+      .pipe(catchError(this.handleError)
+       );
+  }
 
   deleteUser(id: number) {
     if (!this.auth.checkLogin) {

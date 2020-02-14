@@ -14,6 +14,9 @@ export class ProfileComponent implements OnInit {
   //  F I E L D S
   user: User = new User();
   edit: User = null;
+  show = 'password';
+  updatePasssword = false;
+  editPassword: string;
 
   // C O N S T R U C T O R
   constructor(private auth: AuthService, private router: Router, private userServe: UserService) { }
@@ -69,6 +72,32 @@ export class ProfileComponent implements OnInit {
     );
   }
 
+  showPassword() {
+      if (this.show === 'password') {
+        this.show = 'text';
+      } else {
+        this.show = 'password';
+      }
+  }
 
+  showUpdatePassword() {
+    this.updatePasssword = !this.updatePasssword;
+  }
+
+  savePassword() {
+    this.userServe.updateUserPassword(this.editPassword, this.edit.id).subscribe(
+      data => {
+        this.edit.password = data.password;
+        this.user.password = data.password;
+        this.updatePasssword = false;
+
+        this.auth.updateCredentials(this.edit.username, this.editPassword);
+      },
+      err => {
+        console.log('error updating user');
+
+      }
+      );
+  }
 
 }

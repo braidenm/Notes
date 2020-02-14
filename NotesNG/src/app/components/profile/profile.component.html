@@ -26,14 +26,14 @@
     <div class="col-sm-8 profile" *ngIf="edit">
       <h1>Profile</h1>
       <form>
-      <table class="table table-striped">
+        <table class="table table-striped" *ngIf="!updatePasssword">
 
           <tr>
             <td>
               First Name:
             </td>
             <td>
-              <input type="text" required name="firstName" [(ngModel)]="edit.firstName">
+              <input type="text" class="form-control" required name="firstName" [(ngModel)]="edit.firstName">
             </td>
           </tr>
           <tr>
@@ -41,35 +41,53 @@
               last Name:
             </td>
             <td>
-              <input type="text" required name="lastName" [(ngModel)]="edit.lastName">
+              <input type="text" class="form-control" required name="lastName" [(ngModel)]="edit.lastName">
             </td>
           </tr>
           <tr>
-              <td>
-                Email:
-              </td>
-              <td>
-                  <input type="text" required name="email" [(ngModel)]="edit.email">
-              </td>
-            </tr>
+            <td>
+              Email:
+            </td>
+            <td>
+              <input type="text" class="form-control" required name="email" [(ngModel)]="edit.email">
+            </td>
+          </tr>
           <tr>
             <td>
               User Name:
             </td>
             <td>
-              <input type="text" required name="username" [(ngModel)]="edit.username">
+              <input type="text" class="form-control" required name="username" [(ngModel)]="edit.username">
             </td>
           </tr>
+
           <tr>
             <td>
               Password:
             </td>
             <td>
-                <input type="password" required name="password" [(ngModel)]="edit.password">
+              <button class="btn btn-outline-primary" type="button" (click)="showUpdatePassword()">Update
+                Password</button>
             </td>
           </tr>
           <button type="button" class="btn btn-outline-secondary" (click)="cancelEdit()">Cancel</button>
           <button type="button" class="btn btn-outline-success" (click)="saveEdit()">Save</button>
+        </table>
+        <table class="table table-striped" *ngIf="updatePasssword">
+          <tr>
+            <td>
+              Password:
+            </td>
+            <td>
+              <div class="form-group">
+                <span><input [type]="show" class="passwordBox" required name="password" [(ngModel)]="editPassword">
+                <button class="fa fa-eye passwordIcon" type="button"
+                    title="Show Password" (click)="showPassword()"></button></span>
+              </div>
+            </td>
+          </tr>
+          <button type="button" class="btn btn-outline-secondary" (click)="showUpdatePassword()">Cancel</button>
+          <button type="button" class="btn btn-outline-success" (click)="savePassword()">Save</button>
         </table>
       </form>
     </div>

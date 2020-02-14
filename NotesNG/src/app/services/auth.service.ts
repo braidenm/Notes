@@ -45,6 +45,11 @@ export class AuthService {
      );
   }
 
+  updateCredentials(username: string, password: string) {
+    const credentials = this.generateBasicAuthCredentials(username, password);
+    localStorage.setItem('credentials', credentials);
+  }
+
   register(user) {
     // create request to register a new account
     return this.http.post<User>(this.baseUrl + 'register', user)
