@@ -1,12 +1,14 @@
 package com.braidenmiller.notesapp.services;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.braidenmiller.notesapp.entities.User;
 import com.braidenmiller.notesapp.repositories.UserRepo;
 
+@Configuration
 @Service
 public class AuthServiceImpl implements AuthService {
 

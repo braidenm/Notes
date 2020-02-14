@@ -34,18 +34,41 @@ repositories {
 }
 
 dependencies {
+ //springstuff
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+	implementation 'org.springframework.boot:spring-boot-dependencies:2.0.5.RELEASE'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	runtimeOnly 'mysql:mysql-connector-java'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	
+	//enities
 	compile project(':NotesJPA')
-	compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.7'
-	compile 'org.junit.jupiter:junit-jupiter-api:5.0.1'
+	
+	//security
 	compile('org.springframework.boot:spring-boot-starter-security')
-	testCompile('org.apiguardian:apiguardian-api:1.0.0')
-	testRuntime('org.junit.jupiter:junit-jupiter-engine:5.0.1',
-            'org.junit.vintage:junit-vintage-engine:4.12.1',
-            'org.junit.platform:junit-platform-launcher:1.0.1',
-            'org.junit.platform:junit-platform-runner:1.0.1')
+            
+  compile group: 'mysql', name: 'mysql-connector-java', version: '5.1.6'
+  compile group: 'com.fasterxml.jackson.core', name: 'jackson-annotations', version: '2.9.7'
+  compile "mysql:mysql-connector-java:8.0.15"
+  compile "log4j:log4j:1.2.17"
+  testImplementation('org.junit.jupiter:junit-jupiter-api:5.5.2')
+  testImplementation('org.junit.jupiter:junit-jupiter:5.5.2')
 }
+
+test {
+	useJUnitPlatform()
+}
+
+//dependencies {
+//	implementation 'org.springframework.boot:spring-boot-starter-web'
+//	testImplementation 'org.springframework.boot:spring-boot-starter-test'
+//	runtimeOnly 'mysql:mysql-connector-java'
+//	compile project(':NotesJPA')
+//	
+//	compile 'org.junit.jupiter:junit-jupiter-api:5.0.1'
+//	testCompile('org.apiguardian:apiguardian-api:1.0.0')
+//	testRuntime('org.junit.jupiter:junit-jupiter-engine:5.0.1',
+//            'org.junit.vintage:junit-vintage-engine:4.12.1',
+//            'org.junit.platform:junit-platform-launcher:1.0.1',
+//            'org.junit.platform:junit-platform-runner:1.0.1')
+//}

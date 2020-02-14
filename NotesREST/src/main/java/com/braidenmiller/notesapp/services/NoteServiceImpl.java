@@ -5,13 +5,13 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 import com.braidenmiller.notesapp.entities.Note;
 import com.braidenmiller.notesapp.entities.User;
 import com.braidenmiller.notesapp.repositories.NotesRepo;
 import com.braidenmiller.notesapp.repositories.UserRepo;
-
 @Service
 public class NoteServiceImpl implements NoteService {
 	

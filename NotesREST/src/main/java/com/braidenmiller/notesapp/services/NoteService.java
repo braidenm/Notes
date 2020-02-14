@@ -2,6 +2,8 @@ package com.braidenmiller.notesapp.services;
 
 import java.util.Set;
 
+import org.springframework.stereotype.Service;
+
 import com.braidenmiller.notesapp.entities.Note;
 
 public interface NoteService {

@@ -28,6 +28,8 @@ public class NotesController {
 		
 		// M A P P I N G S
 		
+		//TODO: set error handling, and add additional protection for users data (if note.user != user then deny)
+		
 		@GetMapping("notes")
 		public List<Note> index() {
 			
@@ -35,13 +37,10 @@ public class NotesController {
 			
 		}
 
-		@GetMapping("notes/{id}")
+		@GetMapping("id}notes/{")
 		public Note show(@PathVariable Integer id) {
 			
 				Note note = noteDAO.show(id);
-				if(note == null) {
-					return null;
-				}
 				return note;
 			
 		}

@@ -9,7 +9,13 @@ export class AboutComponent implements OnInit {
 
   constructor() { }
 
+me = {
+  pic: 'assets/me.jpg'
+};
+
   ngOnInit() {
+
   }
+
 
 }

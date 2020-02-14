@@ -127,6 +127,28 @@ public class UserController {
 		
 		
 	}
+	@PutMapping("users/password/{id}")
+	public User updatePassword(HttpServletRequest req, HttpServletResponse res, @PathVariable Integer id, 
+			@RequestBody String password) {
+		
+		try {
+			User user = null;
+			user = uService.updatePassword(id, password);
+			
+			StringBuffer resourceUrl = req.getRequestURL();
+			resourceUrl.append("/");
+			resourceUrl.append(user.getId());
+			res.setHeader("Location", resourceUrl.toString());
+			
+			res.setStatus(202);
+			return user;
+		} catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		
+	}
 	@DeleteMapping("users/{id}")
 	public void destroy(HttpServletResponse res, @PathVariable Integer id) {
 		

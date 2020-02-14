@@ -10,6 +10,7 @@ public interface UserService {
 	public User show(int id);
 	public User create(User user);
 	public User update(int id, User user);
+	public User updatePassword(int id, String password);
 	public boolean destroy(int id);
 	public User getLoggedIn(String username);
 }

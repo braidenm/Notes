@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import com.braidenmiller.notesapp.entities.User;
@@ -14,6 +15,9 @@ public class UserServiceImpl implements UserService {
 	// R E P O S I T O R I E S
 	@Autowired
 	private UserRepo uRepo;
+	
+	@Autowired
+	PasswordEncoder encode;
 	
 	// C R U D  O P E R A T I O N S
 	
@@ -57,7 +61,6 @@ public class UserServiceImpl implements UserService {
 		if(managedOp.isPresent()) {
 			User managed = managedOp.get();
 			managed.setEmail(user.getEmail());
-			managed.setPassword(user.getPassword());
 			managed.setRole(user.getRole());
 			managed.setEnabled(user.isEnabled());
 			managed.setFirstName(user.getFirstName());
@@ -97,6 +100,19 @@ public class UserServiceImpl implements UserService {
 		return false;
 	}
 	
+	@Override
+	public User updatePassword(int id, String password) {
+		Optional<User> managedOp = uRepo.findById(id);
+		if(managedOp.isPresent()) {
+			User managed = managedOp.get();
+			managed.setPassword(encode.encode(password));
+
+			return uRepo.saveAndFlush(managed);
+		}
+		
+		return null;
+	}
+	
 	// P R I V A T E  M E T H O D S
 	
 	private boolean uniqueUsername(User user) {
@@ -107,5 +123,7 @@ public class UserServiceImpl implements UserService {
 		}
 		return true;
 	}
+
+	
 
 }
