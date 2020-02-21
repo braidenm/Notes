@@ -100,4 +100,11 @@ export class ProfileComponent implements OnInit {
       );
   }
 
+  maxLength() {
+      if (this.editPassword.length > 25) {
+        this.editPassword = this.editPassword.slice(0, 25);
+        alert('max length is 25 characters');
+      }
+  }
+
 }

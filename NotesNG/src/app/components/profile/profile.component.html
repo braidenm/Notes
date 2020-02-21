@@ -80,7 +80,7 @@
             </td>
             <td>
               <div class="form-group">
-                <span><input [type]="show" class="passwordBox" required name="password" [(ngModel)]="editPassword">
+                <span><input [type]="show" class="passwordBox" (keyup)="maxLength()" required name="password" [(ngModel)]="editPassword">
                 <button class="fa fa-eye passwordIcon" type="button"
                     title="Show Password" (click)="showPassword()"></button></span>
               </div>
