@@ -2,7 +2,7 @@
 <br>
 <br>
 <div class="row">
-<div class="col-sm-3"></div>
+  <div class="col-sm-3"></div>
   <div class="col-sm-6 notes">
     <br>
     <div *ngIf="!selected">
@@ -23,56 +23,56 @@
       <br>
       <br>
       <div class="notesBody">
-          <table class="table table-striped table-hover"  style="border: solid">
+        <table class="table table-striped table-hover" style="border: solid">
 
-              <thead class="thead-dark">
-                <th>Title</th>
-                <th>Mark</th>
-                <th>Last Updated</th>
-                <th class="right">Delete</th>
-              </thead>
-                <tbody>
-                  <tr *ngFor='let note of notes | incomplete: showComplete'>
-                    <td class="title" [ngClass]="strikeout(note)" (click)="displayNote(note)" >{{note.title}}</td>
-                    <td><input type="checkbox" [(ngModel)]="note.completed" (click)='updateBoxNote(note)'></td>
-                    <td [ngClass]="strikeout(note)">{{note.updated | date}}</td>
-                    <td class="right"> <button class="btn btn-danger" (click)='deleteNote(note.id)'>X</button></td>
-                  </tr>
+          <thead class="thead-dark">
+            <th>Title</th>
+            <th>Mark</th>
+            <th>Last Updated</th>
+            <th class="right">Delete</th>
+          </thead>
+          <tbody>
+            <tr *ngFor='let note of notes | incomplete: showComplete'>
+              <td class="title" [ngClass]="strikeout(note)" (click)="displayNote(note)">{{note.title}}</td>
+              <td><input type="checkbox" [(ngModel)]="note.completed" (click)='updateBoxNote(note)'></td>
+              <td [ngClass]="strikeout(note)">{{note.updated | date}}</td>
+              <td class="right"> <button class="btn btn-danger" (click)='deleteNote(note.id)'>X</button></td>
+            </tr>
 
-                </tbody>
-          </table>
+          </tbody>
+        </table>
       </div>
 
-        <form #newTitle= "ngForm" *ngIf="selected == null">
+      <form #newTitle="ngForm" *ngIf="selected == null">
 
-          <input class="form-control" id="addTitle" type="text" name="title" placeholder="title" ngModel>
-          <button type="submit" class="btn btn-outline-primary" (click)="addNote(newTitle)">Add</button>
-        </form>
-      </div>
-
-
-      <div *ngIf="selected && !editNote">
-        <!-- <p>{{selected.id}}</p> -->
-        <h3>{{selected.title}}</h3>
-        <hr>
-        <p>{{selected.details}}</p>
-        <!-- <p>{{selected.completed}}</p> -->
-        <hr>
-        <button class="btn btn-outline-primary" (click)="setEditNote()">Edit</button>
-        <button class="btn btn-outline-success" (click)="displayTable()">Show Table</button>
-        <br>
-      </div>
-
-      <form *ngIf="editNote">
-
-        Title: <input class="form-control" type="text" name="title" [(ngModel)]="editNote.title" >
-        Details: <textarea class="form-control" name="details" [(ngModel)]="editNote.details"></textarea>
-        <!-- Marked: <input class="form-control" type="text" name="completed" [(ngModel)]="editNote.completed" > -->
-        <input class="btn btn-outline-secondary" type="button" name="cancel" value="Cancel" (click)="cancelNote()">
-        <input type="button" class="btn btn-outline-primary" name="updateNote" value="Save" (click)="updateNote()">
-
+        <input class="form-control" id="addTitle" type="text" name="title" placeholder="title" ngModel>
+        <button type="submit" class="btn btn-outline-primary" (click)="addNote(newTitle)">Add</button>
       </form>
+    </div>
+
+
+    <div *ngIf="selected && !editNote">
+      <!-- <p>{{selected.id}}</p> -->
+      <h3>{{selected.title}}</h3>
+      <hr>
+      <p>{{selected.details}}</p>
+      <!-- <p>{{selected.completed}}</p> -->
+      <hr>
+      <button class="btn btn-outline-primary" (click)="setEditNote()">Edit</button>
+      <button class="btn btn-outline-success" (click)="displayTable()">Show Table</button>
       <br>
     </div>
 
+    <form *ngIf="editNote">
+
+      Title: <input class="form-control" type="text" name="title" [(ngModel)]="editNote.title">
+      Details: <textarea class="form-control" name="details" [(ngModel)]="editNote.details"></textarea>
+      <!-- Marked: <input class="form-control" type="text" name="completed" [(ngModel)]="editNote.completed" > -->
+      <input class="btn btn-outline-secondary" type="button" name="cancel" value="Cancel" (click)="cancelNote()">
+      <input type="button" class="btn btn-outline-primary" name="updateNote" value="Save" (click)="updateNote()">
+
+    </form>
+    <br>
   </div>
+
+</div>

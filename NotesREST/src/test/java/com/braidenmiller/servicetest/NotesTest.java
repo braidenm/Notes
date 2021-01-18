@@ -1,60 +1,74 @@
 package com.braidenmiller.servicetest;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertTrue;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import java.util.Set;
+
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.boot.autoconfigure.security.servlet.SecurityAutoConfiguration;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
+import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
+import org.springframework.web.bind.annotation.SessionAttribute;
 
 import com.braidenmiller.notesapp.NotesRestApplication;
+import com.braidenmiller.notesapp.controllers.NotesController;
 import com.braidenmiller.notesapp.entities.Note;
+import com.braidenmiller.notesapp.entities.User;
+import com.braidenmiller.notesapp.services.NoteService;
+import com.braidenmiller.notesapp.services.UserService;
 
 //@RunWith(SpringRunner.class)
-//@SpringBootTest(classes = NotesTest.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+//@DataJpaTest
+//@SpringBootTest(classes = NotesRestApplication.class)
+//@RunWith(SpringRunner.class)
+//@WebMvcTest(NotesController.class)
+//@WebMvcTest
+@SpringBootTest(classes = NotesTest.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @EnableAutoConfiguration(exclude = { SecurityAutoConfiguration.class })
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = NotesRestApplication.class)
 @AutoConfigureMockMvc
+@ContextConfiguration(classes = NotesRestApplication.class)
 class NotesTest {
 
 	private Note note;
 
-//	@MockBean
-//	private NoteService noteService;
-//	
-//	@MockBean
-//	private UserService userService;
+	@MockBean
+	private NoteService noteService;
+	
+	@MockBean
+	private UserService userService;
 	
 	@Autowired
     private MockMvc mockMvc;
 	
 	private static final String RESTURL="/api/";
 
-	@BeforeEach
-	void setUp() throws Exception {
-		
-		
-		
-	}
-
-	@AfterEach
-	void tearDown() throws Exception {
-		
-//		noteService.destroy("test", note.getId());
-	}
-
+//	@BeforeEach
+//	void setUp() throws Exception {
+//		
+//		
+//		
+//	}
+//
+//	@AfterEach
+//	void tearDown() throws Exception {
+//		
+////		noteService.destroy("test", note.getId());
+//	}
+//
 	@Test
+//	@SessionAttribute()
 	void test_index() {
 		
 		try {
@@ -63,23 +77,28 @@ class NotesTest {
 			               .andDo(print())
 			               .andExpect(status().isOk());
 		} catch (Exception e) {
+			e.printStackTrace();
 			assertTrue(false);
-		}     
+		}   
 		
-//		User testUser = userService.show(4);
-//		note = new Note();
-//		note.setDetails("Test Dtails");
-//		note.setTitle("Test Title");
-//		note.setCompleted(false);
-//		note.setUser(testUser);
-//		
-//		note = noteService.create("test", note);
-//		
-//		Set<Note> testNotes = noteService.index("test");
-//		
-//		assertTrue(testNotes.size() == 1);
+		assertTrue(true);
+		
+		User testUser = userService.show(4);
+		note = new Note();
+		note.setDetails("Test Dtails");
+		note.setTitle("Test Title");
+		note.setCompleted(false);
+		note.setUser(testUser);
+		
+		note = noteService.create("test", note);
+		
+		Set<Note> testNotes = noteService.index("test");
+		
+		assertTrue(testNotes.size() == 1);
 		
 	}
+	
+	
 //	@Test
 //	void test_show() {
 //		Note testNote = noteService.show("test", note.getId());

@@ -21,7 +21,7 @@ import com.braidenmiller.notesapp.services.UserService;
 
 @RestController
 @RequestMapping(path = "api")
-@CrossOrigin({ "*", "http://localhost:4200" })
+@CrossOrigin({ "*", "http://localhost:3000"})
 public class UserController {
 
 	//  S E R V I C E S
@@ -48,9 +48,7 @@ public class UserController {
 		try {
 			res.setStatus(200);
 			User user = uService.show(id);
-			if(user == null) {
-				return null;
-			}
+			
 			return user;
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -63,9 +61,7 @@ public class UserController {
 		try {
 			res.setStatus(200);
 			User user = uService.getLoggedIn(principal.getName());
-			if(user == null) {
-				return null;
-			}
+			
 			return user;
 		} catch (Exception e) {
 			e.printStackTrace();

@@ -15,7 +15,7 @@ import com.braidenmiller.notesapp.entities.User;
 import com.braidenmiller.notesapp.services.AuthService;
 
 @RestController
-@CrossOrigin({"*", "http://localhost:4200"})
+@CrossOrigin({"*", "http://localhost:3000"})
 public class AuthController {
 
 	@Autowired

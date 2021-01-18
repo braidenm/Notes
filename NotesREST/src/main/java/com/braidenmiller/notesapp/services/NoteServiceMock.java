@@ -5,34 +5,37 @@ import java.util.Optional;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Service;
 
 import com.braidenmiller.notesapp.entities.Note;
 import com.braidenmiller.notesapp.entities.User;
 import com.braidenmiller.notesapp.repositories.NotesRepo;
+import com.braidenmiller.notesapp.repositories.NotesRepoMock;
 import com.braidenmiller.notesapp.repositories.UserRepo;
-@Service
-public class NoteServiceImpl implements NoteService {
+import com.braidenmiller.notesapp.repositories.UserRepoMock;
+@MockBean
+//@Service
+public class NoteServiceMock implements NoteService {
 	
 	// R E P O S I T O R I E S
 	
-	@Autowired
-	private NotesRepo notesRepo;
-	@Autowired
-	private UserRepo userRepo;
+//	@Autowired
+//	@MockBean
+	private NotesRepo notesRepo = new NotesRepoMock();
+	
+//	@Autowired
+//	@MockBean
+	private UserRepo userRepo = new UserRepoMock();
 
 	// C R U D  O P E R A T I O N S
 	
-	//TODO change to query notes by userId instead of this
 	@Override
 	public Set<Note> index(String username) {
-		
 		Set<Note> notes = new HashSet<>();
 		for (Note note : notesRepo.findAll()) {
-			
 			if(note.getUser().getUsername().equals(username)) {
-				
 				notes.add(note);
 			}
 		}
@@ -76,15 +79,12 @@ public class NoteServiceImpl implements NoteService {
 			if(optional.isPresent()) {
 				Note managed = optional.get();
 				if(managed.getUser().getUsername().equals(username)) {
-					
 					managed.setCompleted(note.isCompleted());
 					managed.setDetails(note.getDetails());
 					managed.setTitle(note.getTitle());
 					try {
-						
 						managed = notesRepo.saveAndFlush(managed);
 						return managed;
-						
 					} catch (Exception e) {
 						e.printStackTrace();
 						return null;
@@ -98,26 +98,18 @@ public class NoteServiceImpl implements NoteService {
 
 	@Override
 	public boolean destroy(String username, int id) {
-		
 		User user = userRepo.findByUsername(username);
 		Optional<Note> optional = notesRepo.findById(id);
-		
 		if(user != null && optional.isPresent()) {
-			
 			Note note = optional.get();
 			if(note.getUser().getUsername().equals(username)) {
-				
 				user.removeNote(note);
 				note.setUser(null);
-				
 				try {
-					
 					notesRepo.delete(note);
 					userRepo.saveAndFlush(user);
 					return true;
-					
 				} catch (Exception e) {
-					
 					e.printStackTrace();
 					return false;
 				}
@@ -136,18 +128,13 @@ public class NoteServiceImpl implements NoteService {
 		User user = userRepo.findByUsername(username);
 		Set<Note> notes = notesRepo.findByDetailsLikeOrTitleLike(search, search);
 		Set<Note> result = new HashSet<>();
-		
 		if(user != null) {
-			
 			for (Note note : notes) {
-				
 				if(note.getUser().getUsername().equals(username)) {
-					
 					result.add(note);
 				}
 			}
 			if(search.equals("") || search == null) {
-				
 				result.addAll(notesRepo.findAll());
 			}
 		}

@@ -22,7 +22,7 @@ import com.braidenmiller.notesapp.services.NoteService;
 
 @RestController
 @RequestMapping(path = "api")
-@CrossOrigin({ "*", "http://localhost:4200" })
+@CrossOrigin({ "*", "http://localhost:3000" })
 public class NotesController {
 
 	//  S E R V I C E S

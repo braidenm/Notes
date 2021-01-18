@@ -13,40 +13,41 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.braidenmiller.notesapp.entities.Note;
 import com.braidenmiller.notesapp.services.NoteService;
+import com.braidenmiller.notesapp.services.NoteServiceMock;
 
 class NotesServiceTest {
 	
-//	private Note note;
-//
+	private Note note;
+
 //	@Autowired
-//	private NoteService noteService;
-//
-//	@BeforeEach
-//	void setUp() throws Exception {
-//		note = new Note();
-//		note.setDetails("Test Dtails");
-//		note.setTitle("Test Title");
-//		note.setCompleted(false);
-//		
+	private NoteService noteService = new NoteServiceMock();
+
+	@BeforeEach
+	void setUp() throws Exception {
+		note = new Note();
+		note.setDetails("Test Dtails");
+		note.setTitle("Test Title");
+		note.setCompleted(false);
+		
 //		noteService.create("test", note);
-//		
-//		
-//	}
-//
-//	@AfterEach
-//	void tearDown() throws Exception {
-//		
+		
+		
+	}
+
+	@AfterEach
+	void tearDown() throws Exception {
+		
 //		noteService.destroy("test", note.getId());
-//	}
-//
-//	@Test
-//	@DisplayName( "Test Index")
-//	void test_index() {
-//		Set<Note> testNotes = noteService.index("test");
-//		
-//		assertTrue(testNotes.size() == 1);
-//		
-//	}
+	}
+
+	@Test
+	@DisplayName( "Test Index")
+	void test_index() {
+		Set<Note> testNotes = noteService.index("tester");
+		
+		assertTrue(testNotes.size() == 1);
+		
+	}
 //	@Test
 //	@DisplayName( "Test Show")
 //	void test_show() {
